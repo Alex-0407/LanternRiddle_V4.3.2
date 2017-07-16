@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.bingo.lattern"
+	android:versionCode="4"
+	android:versionName="4.0" >
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.GET_TASKS" />
+	<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+	<uses-sdk
+		android:minSdkVersion="11"
+		android:targetSdkVersion="17" />
+	<application
+		android:allowBackup="true"
+		android:icon="@drawable/lantern"
+		android:label="@string/app_name"
+		android:theme="@style/NoTitleTheme" >
+		<!-- X5内核鉴权所需要的appkey，如果开发者使用X5内核加强版SDK请保留此配置，并把value替换成自己的appkey -->
+		<!-- <meta-data android:name="QBSDKAppKey" android:value="oGMem5rlxZdEW/c1RWxWr2Rk"> </meta-data> -->
+		<!-- SDK 相关声明 -->
+		<service
+			android:name="com.qq.e.comm.DownloadService"
+			android:exported="false" >
+		</service>
+		<activity
+			android:name="com.qq.e.ads.ADActivity"
+			android:configChanges="keyboard|keyboardHidden|orientation|screenSize" >
+		</activity>
+		<activity android:name="com.bingo.riddle.activity.FlashActivity" >
+			<intent-filter>
+				<!-- 标识Activity为一个程序的开始 -->
+				<action android:name="android.intent.action.MAIN" />
+				<!-- 决定应用程序是否显示在程序列表里 -->
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<!-- 应用吧 -->
+		<activity
+			android:name="com.tencent.tauth.AuthActivity"
+			android:launchMode="singleTask"
+			android:noHistory="true" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="tencent222222" />
+				<!-- 100380359 100381104 222222 -->
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.tencent.sample.DataProviderActivity"
+			android:exported="false"
+			android:launchMode="singleTop" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:scheme="tencent222222.data" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.tencent.open.yyb.AppbarActivity"
+			android:configChanges="orientation|keyboardHidden"
+			android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+		<activity android:name="com.tencent.connect.avatar.ImageActivity" />
+		<activity
+			android:name="com.tencent.connect.common.AssistActivity"
+			android:configChanges="orientation|keyboardHidden"
+			android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+		<activity
+			android:name="com.bingo.riddle.activity.MainFragmentActivity"
+			android:exported="true"
+			android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+		<activity
+			android:name="com.bingo.riddle.activity.LanternActivity"
+			android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+	</application>
+</manifest>
